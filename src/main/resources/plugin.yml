@@ -1,0 +1,4 @@
+name: Bettershulker
+version: '${project.version}'
+main: com.airplanegobrr.bettershulker.bettershulker.Bettershulker
+api-version: 1.18

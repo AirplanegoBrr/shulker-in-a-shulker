@@ -14,6 +14,6 @@ public class InventoryInteract implements Listener {
 
     @EventHandler
     public void InventoryInteractEvent(InventoryInteractEvent event){
-        main.getLogger().info("InventoryInteractEvent");
+        main.log("InventoryInteractEvent");
     }
 }

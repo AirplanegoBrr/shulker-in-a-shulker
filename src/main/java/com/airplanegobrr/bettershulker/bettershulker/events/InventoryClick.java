@@ -20,8 +20,8 @@ public class InventoryClick implements Listener {
 
     @EventHandler
     public void InventoryClickEvent(InventoryClickEvent event){
-        main.getLogger().info(" ");
-        main.getLogger().info("InventoryClickEvent");
+        main.log(" ");
+        main.log("InventoryClickEvent");
         Inventory inv = event.getClickedInventory();
         Inventory inv2 = event.getInventory();
         ItemStack item = event.getCurrentItem();
@@ -33,28 +33,30 @@ public class InventoryClick implements Listener {
         int slot = event.getSlot();
         int slot2 = event.getRawSlot();
 
-        main.getLogger().info("Inv: "+inv.getType().toString());
-        main.getLogger().info("Inv2: "+inv2.getType().toString());
-        main.getLogger().info("Clicked item: "+item.getType().toString());
-        main.getLogger().info("Item holding: "+itemHolding.getType().toString());
-        main.getLogger().info("Result: "+res.toString());
-        main.getLogger().info("Is the inv the block? "+ (inv.getType().toString() == itemHolding.getType().toString()));
-        main.getLogger().info("Is the item we are clicking air? "+String.valueOf(item.getType().toString() == "AIR"));
-        //slots
-        main.getLogger().info("Slot: "+slot);
-        main.getLogger().info("Slot2: "+slot2);
-        //Log action
-        main.getLogger().info("Action: "+action.toString());
+        main.log("Inv: " + inv.getType().toString());
+        main.log("Inv2: " + inv2.getType().toString());
+        main.log("Clicked item: " + item.getType().toString());
+        main.log("Item holding: " + itemHolding.getType().toString());
+        main.log("Result: " + res.toString());
+        main.log("Is the inv the block? " + (inv.getType().toString() == itemHolding.getType().toString()));
+        main.log("Is the item we are clicking air? " + String.valueOf(item.getType().toString() == "AIR"));
 
-        if (inv.getType().toString() == itemHolding.getType().toString()){
+        //slots
+        main.log("Slot: "+slot);
+        main.log("Slot2: "+slot2);
+        //Log action
+        main.log("Action: "+action.toString());
+
+        if (inv.getType().toString().contains("SHULKER") && itemHolding.getType().toString().contains("SHULKER")){
+
             event.setCancelled(true);
             if (item.getType().toString() == "AIR"){
-                main.getLogger().info("Item is air. Placing item.");
+                main.log("Item is air. Placing item.");
                 event.setCurrentItem(itemHolding);
                 itemHolding.setAmount(0);
             } else {
                 //swap code
-                main.getLogger().info("Swapping");
+                main.log("Swapping");
                 ItemStack temp = item;
                 event.setCurrentItem(itemHolding);
                 itemHolding.setAmount(0);
@@ -65,13 +67,13 @@ public class InventoryClick implements Listener {
         if (inv2.getType().toString() == item.getType().toString() & shift){
             if (inv == inv2) return;
             event.setCancelled(true);
-            main.getLogger().info("Shift clicked!");
+            main.log("Shift clicked!");
             //check that inv2 has enough space to add the item
             if (inv2.firstEmpty() != -1){
                 inv2.addItem(item);
                 inv.removeItem(item);
             }
         }
-        main.getLogger().info(" ");
+        main.log(" ");
     }
 }

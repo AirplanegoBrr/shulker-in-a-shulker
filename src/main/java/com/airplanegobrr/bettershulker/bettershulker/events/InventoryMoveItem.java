@@ -14,7 +14,10 @@ public class InventoryMoveItem implements Listener {
 
     @EventHandler
     public void onInventoryMoveItem(InventoryMoveItemEvent event){
-        if (event.getDestination().getType().toString() == event.getItem().getType().toString()){
+        main.log("onInventoryMoveItem");
+        main.log(String.valueOf(event.getDestination().getType().toString().contains("SHULKER")));
+        main.log(String.valueOf(event.getItem().getType().toString().contains("SHULKER")));
+        if (event.getDestination().getType().toString().contains("SHULKER") == event.getItem().getType().toString().contains("SHULKER")){
             //move item to inv block with BukkitRunnable to delay
             event.getDestination().addItem(event.getItem());
             //remove item from inv block

@@ -29,6 +29,9 @@ public class InventoryClick implements Listener {
         Boolean shift = event.isShiftClick();
         InventoryAction action = event.getAction();
         Event.Result res = event.getResult();
+        
+        //Werid inv null error fix
+        if (!inv || !inv2) return
 
         int slot = event.getSlot();
         int slot2 = event.getRawSlot();

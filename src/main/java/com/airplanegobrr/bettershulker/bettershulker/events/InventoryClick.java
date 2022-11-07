@@ -31,7 +31,7 @@ public class InventoryClick implements Listener {
         Event.Result res = event.getResult();
         
         //Werid inv null error fix
-        if (!inv || !inv2) return
+        if (inv == null || inv2 == null) return;
 
         int slot = event.getSlot();
         int slot2 = event.getRawSlot();

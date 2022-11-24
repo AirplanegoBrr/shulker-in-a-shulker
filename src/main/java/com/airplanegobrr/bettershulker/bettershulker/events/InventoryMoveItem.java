@@ -18,20 +18,19 @@ public class InventoryMoveItem implements Listener {
         main.log("onInventoryMoveItem");
         main.log(String.valueOf(event.getDestination().getType().toString().contains("SHULKER")));
         main.log(String.valueOf(event.getItem().getType().toString().contains("SHULKER")));
-        if (event.getDestination().getType().toString().contains("SHULKER") == event.getItem().getType().toString()
-                .contains("SHULKER")) {
+        if (event.getDestination().getType().toString().contains("SHULKER") && event.getItem().getType().toString().contains("SHULKER")) {
 
-            //new BukkitRunnable() {
-            //    @Override
-            //    public void run() {
-            //        main.getLogger().info("Hooper Item move!");
-            //        // move item to inv block with BukkitRunnable to delay
-            //        event.getDestination().addItem(event.getItem());
-            //        // remove item from inv block
-            //        event.getSource().removeItem(event.getItem());
-            //        event.setCancelled(true);
-            //    }
-            //}.runTaskLater(main, 1);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    main.getLogger().info("Hooper Item move!");
+                    // move item to inv block with BukkitRunnable to delay
+                    event.getDestination().addItem(event.getItem());
+                    // remove item from inv block
+                    event.getSource().removeItem(event.getItem());
+                    event.setCancelled(true);
+                }
+            }.runTaskLater(main, 1);
         }
     }
 }
